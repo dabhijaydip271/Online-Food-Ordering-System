@@ -1,0 +1,170 @@
+/* Orders Page */
+
+.order-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-2xl);
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.order-card {
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.order-card:hover {
+  transform: none;
+}
+
+.order-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.order-card-header:hover {
+  background: var(--bg-glass-hover);
+}
+
+.order-id {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.order-customer {
+  display: flex;
+  gap: var(--space-lg);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.order-date {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.order-card-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.order-total {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent-secondary);
+}
+
+.order-expand-icon {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Order Details (Expanded) */
+.order-details {
+  padding: var(--space-lg);
+  border-top: 1px solid var(--border-color);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.order-address {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+  line-height: 1.6;
+}
+
+.order-items-table {
+  margin-bottom: var(--space-lg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.order-items-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-glass);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+.order-items-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.88rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.order-actions {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border-color);
+}
+
+.status-update {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.status-update .form-label {
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.status-update .form-select {
+  width: auto;
+  min-width: 160px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .order-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .order-card-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .order-customer {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .order-items-header,
+  .order-items-row {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    font-size: 0.78rem;
+  }
+
+  .order-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
