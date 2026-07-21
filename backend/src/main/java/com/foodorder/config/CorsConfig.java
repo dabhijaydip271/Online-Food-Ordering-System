@@ -16,14 +16,15 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
 
-                registry.addMapping("/api/**")
+                registry.addMapping("/**")
                         .allowedOrigins(
                                 "http://localhost:5173",
-                                "https://online-food-ordering-frontend.onrender.com"
+                                "https://online-food-ordering-system-lovat.vercel.app"
                         )
-                        .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
+                        .allowedMethods("*")
                         .allowedHeaders("*")
                         .allowCredentials(true);
+
             }
         };
     }
