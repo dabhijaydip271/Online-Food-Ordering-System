@@ -33,7 +33,12 @@ public class Order {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(
+            mappedBy = "order",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
+    )
     @JsonManagedReference
     private List<OrderItem> orderItems = new ArrayList<>();
 
@@ -42,10 +47,9 @@ public class Order {
         createdAt = LocalDateTime.now();
     }
 
-    // Default constructor
-    public Order() {}
+    public Order() {
+    }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
