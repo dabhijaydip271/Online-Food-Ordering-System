@@ -12,7 +12,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/order-items")
-@CrossOrigin(origins = "*")
 public class OrderItemController {
 
     @Autowired
@@ -21,51 +20,53 @@ public class OrderItemController {
     // CREATE
     @PostMapping
     public ResponseEntity<OrderItem> createOrderItem(@RequestBody OrderItem orderItem) {
-        return new ResponseEntity<>(orderItemService.createOrderItem(orderItem), HttpStatus.CREATED);
+        OrderItem created = orderItemService.createOrderItem(orderItem);
+        return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
 
-    // GET ALL
+    // READ - Get All Order Items
     @GetMapping
     public ResponseEntity<List<OrderItem>> getAllOrderItems() {
         return ResponseEntity.ok(orderItemService.getAllOrderItems());
     }
 
-    // GET BY ID
+    // READ - Get Order Item By ID
     @GetMapping("/{id}")
     public ResponseEntity<OrderItem> getOrderItemById(@PathVariable Long id) {
-
         return orderItemService.getOrderItemById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // GET BY ORDER ID
+    // READ - Get Order Items By Order ID
     @GetMapping("/order/{orderId}")
     public ResponseEntity<List<OrderItem>> getOrderItemsByOrderId(@PathVariable Long orderId) {
         return ResponseEntity.ok(orderItemService.getOrderItemsByOrderId(orderId));
     }
 
-    // UPDATE
+    // UPDATE - PUT
     @PutMapping("/{id}")
     public ResponseEntity<OrderItem> updateOrderItem(
             @PathVariable Long id,
             @RequestBody OrderItem orderItem) {
 
         try {
-            return ResponseEntity.ok(orderItemService.updateOrderItem(id, orderItem));
+            OrderItem updated = orderItemService.updateOrderItem(id, orderItem);
+            return ResponseEntity.ok(updated);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
     }
 
-    // PATCH
+    // UPDATE - PATCH
     @PatchMapping("/{id}")
     public ResponseEntity<OrderItem> patchOrderItem(
             @PathVariable Long id,
             @RequestBody Map<String, Object> updates) {
 
         try {
-            return ResponseEntity.ok(orderItemService.patchOrderItem(id, updates));
+            OrderItem updated = orderItemService.patchOrderItem(id, updates);
+            return ResponseEntity.ok(updated);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
@@ -74,7 +75,6 @@ public class OrderItemController {
     // DELETE
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteOrderItem(@PathVariable Long id) {
-
         try {
             orderItemService.deleteOrderItem(id);
             return ResponseEntity.noContent().build();
