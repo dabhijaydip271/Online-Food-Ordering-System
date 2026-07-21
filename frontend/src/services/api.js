@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://online-food-ordering-backend-tq2v.onrender.com/api';
+const API_BASE_URL = 'https://online-food-ordering-backend-tq2v.onrender.com';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
